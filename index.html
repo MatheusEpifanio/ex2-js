@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang=pt-br">
+<head> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificado de idade</title>
+
+    <style>
+
+        body
+        {
+            background-color: rgb(41, 41, 41);
+            font-family: 'Courier New', Courier, monospace;
+            color: aliceblue;
+            
+        }
+
+        header
+        {
+            text-align: center;
+        }
+
+        #cont
+        {
+            background-color: whitesmoke;
+            color: black;
+            width: 50%;
+            margin: 0px auto;
+            padding: 15px;
+            font-weight: 550;
+            border-radius: 10px;
+        }
+        #cont img
+        {
+            width: 200px;
+        }
+        input
+        {
+            margin-bottom: 5px;
+        }
+        input[type ="button"]
+        {
+            padding: 4px;
+            margin-top: 15px;
+            background-color: rgba(187, 187, 187, 0.491);
+            
+            
+        }
+
+
+
+        mark
+        {
+            background-color: red;
+        }
+
+        #center
+        {
+           text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Verificador de idade</h1>
+    </header>
+
+    <section>
+        <div id="cont">
+            Ano de nascimento:<input type="number" name="idade" id="idade"><br>
+
+            Sexo: <input type="radio" name="sexo" id="fem" value="f" checked><label for="f" >Femenino</label>
+
+            <input type="radio" name="sexo" id="masc" value="m"><label for="m">Masculino</label><br>
+            
+            <input type="button" value="Calcular" id="calcular">
+            
+            <p>Preencha os dados acima para ver o resultado</p>
+
+            <div id="center">
+            <div id="res">
+                
+            </div>
+            <p id="img"></p>
+            
+            </div>
+        </div>
+            
+
+
+        <script>
+        window.document.querySelector('input#calcular').addEventListener('click',calcular)
+
+
+            function calcular()
+            {
+                var txt = window.document.getElementById('idade')
+                var res = window.document.getElementById('res')
+                var img = window.document.getElementById('img')
+                var idade = Number(txt.value)
+                var ano = new Date()
+                var total =  ano.getFullYear() - idade 
+                var sexo = window.document.getElementsByName('sexo')
+                 var sex = ''
+                 
+
+                 
+                
+                if(idade > 0 && idade <= ano.getFullYear())
+                {
+                    
+
+                    if(total == 0)
+                    {
+                        if(sexo[0].checked)
+                        {
+                            sex = 'Mulher'
+                            img.innerHTML = '<img src="bebef.png">'
+                        }
+                        else
+                        {
+                            sex = 'Homem'
+                            img.innerHTML = '<img src ="bebem.png">'
+                        }
+                    }
+                    
+                    else if(total <= 10)
+                    {
+                        if(sexo[0].checked)
+                        {
+                            sex = 'Mulher'
+                            img.innerHTML = '<img src = "criancaf.png">'
+                        }
+                        else
+                        {
+                            sex = 'Homem'
+                            img.innerHTML = '<img src ="criancam.png">'
+                        } 
+                    }
+
+
+                    else if(total <= 17)
+                    {
+                        if(sexo[0].checked)
+                        {
+                            sex = 'Mulher'
+                            img.innerHTML = '<img src = "f.png">'
+                        }
+                        else
+                        {
+                            sex = 'Homem'
+                            img.innerHTML = '<img src = "m.png">'
+                        }
+
+                    }
+
+                    else if(total <= 40)
+                    {
+                        if(sexo[0].checked)
+                        {
+                            sex = 'Mulher'
+                            img.innerHTML = '<img src = "adultof.png">'
+                        }
+                        else
+                        {
+                            sex = 'Homem'
+                            img.innerHTML = '<img src = "adultom.png">'
+                        }
+                    }
+                    
+                    else if(total <=  60)
+                    {
+                            if(sexo[0].checked)
+                            {
+                                sex = 'Mulher'
+                                img.innerHTML ='<img src = "mulher.png">'
+                            }
+                            else
+                            {
+                                sex = 'Homem'
+                                img.innerHTML ='<img src = "homem.png">'
+                            }
+                            
+                    }
+                    else if(total <= 119 )
+                    {
+                        if(sexo[0].checked)
+                        {
+                            sex = 'Mulher'
+                            img.innerHTML ='<img src = "velha.png">'
+                        }
+                        else
+                        {
+                            sex = 'Homem'
+                            img.innerHTML ='<img src = "velho.png">'
+                        }
+
+                    }
+                    else
+                    {
+                        img.innerHTML = '<img src = "rip.png">'
+                    }
+                   
+                    res.innerText = ` ${sex} com ${total} anos `
+            }
+            else
+            {
+                res.innerHTML = `<mark>Insira um valor ou igual ao ano atual<mark>`
+            }
+            
+               
+            }////função
+
+
+
+
+        </script>
+        
+    </section>
+</body>
+</html>
